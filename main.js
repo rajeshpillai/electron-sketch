@@ -7,6 +7,8 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    transparent: true,
+    frame:false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -16,13 +18,16 @@ function createWindow () {
   win.loadFile('index.html')
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
+
+app.on('ready', () => setTimeout(createWindow, 500));
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow)
+//app.whenReady().then(createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
